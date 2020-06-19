@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CzTrainApi.Db\CzTrainApi.Db.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Repository.Contracts\CzTrainApi.Repository.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

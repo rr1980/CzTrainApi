@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CzTrainApi.Apis.Token\CzTrainApi.Apis.Token.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Db\CzTrainApi.Db.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Repository.Contracts\CzTrainApi.Repository.Contracts.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Repository\CzTrainApi.Repository.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Services.Contracts\CzTrainApi.Services.Contracts.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Services\CzTrainApi.Services.csproj" />
+    <ProjectReference Include="..\CzTrainApi.ViewModels\CzTrainApi.ViewModels.csproj" />
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CzTrainApi.Entities\CzTrainApi.Entities.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Repository.Contracts\CzTrainApi.Repository.Contracts.csproj" />
+    <ProjectReference Include="..\CzTrainApi.Services.Contracts\CzTrainApi.Services.Contracts.csproj" />
+    <ProjectReference Include="..\CzTrainApi.ViewModels\CzTrainApi.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
