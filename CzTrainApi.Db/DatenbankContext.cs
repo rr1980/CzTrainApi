@@ -9,10 +9,12 @@ namespace CzTrainApi.Db
     public class DatenbankContext : DbContext
     {
         public virtual DbSet<Person> Personen { get; set; }
-        public virtual DbSet<Anrede> Anreden { get; set; }
         public virtual DbSet<Adresse> Adressen { get; set; }
         public virtual DbSet<Kunde> Kunden { get; set; }
         public virtual DbSet<Benutzer> Benutzer { get; set; }
+        public virtual DbSet<KatalogObjekt> KatlogObjekte { get; set; }
+        public virtual DbSet<Anrede> Anreden { get; set; }
+        public virtual DbSet<Titel> Titel { get; set; }
 
         public DatenbankContext(DbContextOptions<DatenbankContext> options) : base(options) { }
 
@@ -32,17 +34,26 @@ namespace CzTrainApi.Db
                 table.Property(e => e.Geburtstag);
             });
 
-            modelBuilder.Entity<Anrede>(table =>
+            modelBuilder.Entity<KatalogObjekt>(table =>
             {
+                table.ToTable("KatalogObjekte");
                 table.HasKey(x => x.Id);
                 table.Property(e => e.Geloescht);
                 table.HasQueryFilter(x => !x.Geloescht);
                 table.Property(e => e.Erstellungsdatum);
                 table.Property(e => e.Aenderungsdatum);
-
+                table.HasDiscriminator(e => e.Discriminator);
                 table.Property(e => e.Bezeichnung).HasMaxLength(50);
+            });
 
-                table.HasMany(x => x.Personen).WithOne(x => x.Anrede).OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Anrede>(table =>
+            {
+                table.HasMany(x => x.Personen).WithOne(x => x.Anrede).HasForeignKey(x => x.AnredeId).OnDelete(DeleteBehavior.NoAction);
+            });
+
+            modelBuilder.Entity<Titel>(table =>
+            {
+                table.HasMany(x => x.Personen).WithOne(x => x.Titel).HasForeignKey(x=>x.TitelId).OnDelete(DeleteBehavior.NoAction);
             });
 
             modelBuilder.Entity<Benutzer>(table =>

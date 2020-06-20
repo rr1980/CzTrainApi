@@ -9,6 +9,7 @@ namespace CzTrainApi.Db
         public static void Seed(DatenbankContext context)
         {
             Seed_Anrede(context);
+            Seed_Titel(context);
             Seed_Person(context);
             Seed_Benutzer(context);
         }
@@ -31,6 +32,23 @@ namespace CzTrainApi.Db
             }
         }
 
+        private static void Seed_Titel(DatenbankContext context)
+        {
+            if (!context.Titel.Any())
+            {
+                context.Titel.Add(new Titel
+                {
+                    Bezeichnung = "Dr."
+                });
+
+                context.Titel.Add(new Titel
+                {
+                    Bezeichnung = "Prof."
+                });
+
+                context.SaveChanges();
+            }
+        }
         private static void Seed_Person(DatenbankContext context)
         {
             if (!context.Personen.Any())
@@ -40,7 +58,8 @@ namespace CzTrainApi.Db
                     Nachname = "Mustermann",
                     Vorname = "Max",
                     Geburtstag = DateTime.Now,
-                    Anrede = context.Anreden.SingleOrDefault(x => x.Bezeichnung == "Herr")
+                    Anrede = context.Anreden.SingleOrDefault(x => x.Bezeichnung == "Herr"),
+                    Titel = context.Titel.SingleOrDefault(x => x.Bezeichnung == "Dr."),
                 });
 
                 context.SaveChanges();
@@ -54,7 +73,7 @@ namespace CzTrainApi.Db
                 context.Benutzer.Add(new Benutzer
                 {
                     Benutzername = "Max123",
-                    Passwort = "12003",
+                    Passwort = "ehYsOxcxE5aCr3qbySIYsm3uxTykAHRK985TtdlK+8U=",
                     BenutzerRolle = "Nutzer",
 
                     Person = context.Personen.SingleOrDefault(x => x.Nachname == "Mustermann")

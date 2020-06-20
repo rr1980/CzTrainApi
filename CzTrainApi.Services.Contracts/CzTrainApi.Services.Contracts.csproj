@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CzTrainApi.Common\CzTrainApi.Common.csproj" />
     <ProjectReference Include="..\CzTrainApi.ViewModels\CzTrainApi.ViewModels.csproj" />
   </ItemGroup>
 

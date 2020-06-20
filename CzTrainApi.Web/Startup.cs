@@ -3,10 +3,9 @@ using System.IO;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
+using CzTrainApi.Apis.Katalog.Core;
 using CzTrainApi.Apis.Token;
 using CzTrainApi.Db;
-using CzTrainApi.Repository;
-using CzTrainApi.Repository.Contracts;
 using CzTrainApi.Services;
 using CzTrainApi.Services.Contracts;
 using CzTrainApi.ViewModels.Login;
@@ -34,8 +33,10 @@ namespace CzTrainApi.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var TokenControllerAssembly = typeof(TokenController).Assembly;
-            services.AddControllers().PartManager.ApplicationParts.Add(new AssemblyPart(TokenControllerAssembly));
+            var tokenControllerAssembly = typeof(TokenController).Assembly;
+            services.AddControllers().PartManager.ApplicationParts.Add(new AssemblyPart(tokenControllerAssembly));
+
+            
 
             services.AddDbContext<DatenbankContext>(options =>
             {
@@ -47,12 +48,11 @@ namespace CzTrainApi.Web
 
                 //options.EnableSensitiveDataLogging();
             });
-
            
 
-            services.AddScoped<IDbRepository, DbRepository>();
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IAnredeService, AnredeService>();
+            //services.AddScoped<IAnredeKatalogService, AnredeKatalogService>();
+            services.AddKatalog();
 
             services.AddControllers();
 
@@ -65,6 +65,10 @@ namespace CzTrainApi.Web
                 options.AddPolicy("NutzerPolicy", policyBuilder => {
                     policyBuilder.RequireClaim(ClaimTypes.Role, "Admin", "Nutzer");
                 });
+
+                options.AddPolicy("KatalogLesenPolicy", policyBuilder => {
+                    policyBuilder.RequireClaim(ClaimTypes.Role, "Admin", "Nutzer");
+                });
             });
 
             services.AddSwaggerGen(c =>
@@ -74,7 +78,7 @@ namespace CzTrainApi.Web
                     Version = "v1",
                     Title = "CzTrainApi",
                     //Description = "A simple example ASP.NET Core Web API",
-                    Description = "Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwIiwianRpIjoiZjE4ZTgyMDgtODljOC00MzAzLTllNmItNDAzYzhiYjMzOWY2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTnV0emVyIiwibmJmIjoxNTkyNjAyODgwLCJleHAiOjE1OTI2MTAwODAsImlzcyI6ImRramFzZGFqc2prMzkwMjA5MzgyMTA5Mzhsa3NhamRsamFzbGtqIiwiYXVkIjoiZGtqYXNkYWpzamszOTAyMDkzODIxMDkzOGxrc2FqZGxqYXNsa2oifQ.LJBa57xF7Kw3JISpvsviMF13YrbKxKi4WMvDwTqnI1g"
+                    Description = "Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwIiwianRpIjoiMzlhMjAwYWQtNDVjNS00N2EwLTk4YzQtYmEzYjNkZmYwM2I2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTnV0emVyIiwibmJmIjoxNTkyNjc2MDk3LCJleHAiOjE1OTI2ODMyOTcsImlzcyI6ImRramFzZGFqc2prMzkwMjA5MzgyMTA5Mzhsa3NhamRsamFzbGtqIiwiYXVkIjoiZGtqYXNkYWpzamszOTAyMDkzODIxMDkzOGxrc2FqZGxqYXNsa2oifQ.gPM-J5q2_nZTY0Bd0RnML9aanDV3sCcr2r7sa2wwt8I"
                 });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -113,6 +117,10 @@ namespace CzTrainApi.Web
                 var xmlFile2 = $"{typeof(TokenController).Assembly.GetName().Name}.xml";
                 var xmlPath2 = Path.Combine(AppContext.BaseDirectory, xmlFile2);
                 c.IncludeXmlComments(xmlPath2);
+
+                var xmlFile3 = $"{typeof(TokenController).Assembly.GetName().Name}.xml";
+                var xmlPath3 = Path.Combine(AppContext.BaseDirectory, xmlFile3);
+                c.IncludeXmlComments(xmlPath3);
             });
 
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:Secret"]);

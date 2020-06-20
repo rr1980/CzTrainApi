@@ -12,6 +12,9 @@ namespace CzTrainApi.Entities
 
         public long? AnredeId { get; set; }
         public Anrede Anrede { get; set; }
+        
+        public long? TitelId { get; set; }
+        public Titel Titel { get; set; }
 
         public ICollection<Adresse> Adressen { get; set; }
         public ICollection<Benutzer> Benutzer { get; set; }

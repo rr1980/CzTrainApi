@@ -30,9 +30,6 @@ namespace CzTrainApi.Db.Migrations
                     b.Property<DateTime?>("Aenderungsdatum")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("BenutzerRolle")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Erstellungsdatum")
                         .HasColumnType("datetime2");
 
@@ -63,34 +60,6 @@ namespace CzTrainApi.Db.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("Adressen");
-                });
-
-            modelBuilder.Entity("CzTrainApi.Entities.Anrede", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("Aenderungsdatum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("BenutzerRolle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Bezeichnung")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<DateTime>("Erstellungsdatum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Geloescht")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Anreden");
                 });
 
             modelBuilder.Entity("CzTrainApi.Entities.Benutzer", b =>
@@ -129,6 +98,37 @@ namespace CzTrainApi.Db.Migrations
                     b.ToTable("Benutzer");
                 });
 
+            modelBuilder.Entity("CzTrainApi.Entities.KatalogObjekt", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("Aenderungsdatum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Bezeichnung")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Erstellungsdatum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Geloescht")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KatalogObjekte");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("KatalogObjekt");
+                });
+
             modelBuilder.Entity("CzTrainApi.Entities.Kunde", b =>
                 {
                     b.Property<long>("Id")
@@ -139,9 +139,6 @@ namespace CzTrainApi.Db.Migrations
 
                     b.Property<DateTime?>("Aenderungsdatum")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("BenutzerRolle")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Erstellungsdatum")
                         .HasColumnType("datetime2");
@@ -173,9 +170,6 @@ namespace CzTrainApi.Db.Migrations
                     b.Property<long?>("AnredeId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("BenutzerRolle")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Erstellungsdatum")
                         .HasColumnType("datetime2");
 
@@ -189,6 +183,9 @@ namespace CzTrainApi.Db.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<long?>("TitelId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Vorname")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
@@ -197,7 +194,23 @@ namespace CzTrainApi.Db.Migrations
 
                     b.HasIndex("AnredeId");
 
+                    b.HasIndex("TitelId");
+
                     b.ToTable("Personen");
+                });
+
+            modelBuilder.Entity("CzTrainApi.Entities.Anrede", b =>
+                {
+                    b.HasBaseType("CzTrainApi.Entities.KatalogObjekt");
+
+                    b.HasDiscriminator().HasValue("Anrede");
+                });
+
+            modelBuilder.Entity("CzTrainApi.Entities.Titel", b =>
+                {
+                    b.HasBaseType("CzTrainApi.Entities.KatalogObjekt");
+
+                    b.HasDiscriminator().HasValue("Titel");
                 });
 
             modelBuilder.Entity("CzTrainApi.Entities.Adresse", b =>
@@ -232,7 +245,12 @@ namespace CzTrainApi.Db.Migrations
                     b.HasOne("CzTrainApi.Entities.Anrede", "Anrede")
                         .WithMany("Personen")
                         .HasForeignKey("AnredeId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("CzTrainApi.Entities.Titel", "Titel")
+                        .WithMany("Personen")
+                        .HasForeignKey("TitelId")
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 #pragma warning restore 612, 618
         }

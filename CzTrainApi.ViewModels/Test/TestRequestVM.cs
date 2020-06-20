@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CzTrainApi.ViewModels.Test
 {
-    public class TestAnredeRequestVM
+    public class TestRequestVM
     {
         /// <summary>
         /// AnredId
@@ -26,5 +26,7 @@ namespace CzTrainApi.ViewModels.Test
     {
         public long Id { get; set; }
         public string FullName { get; set; }
+        public string Benutzername { get; set; }
+        public string Titel { get; set; }
     }
 }

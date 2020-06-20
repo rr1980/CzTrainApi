@@ -7,6 +7,7 @@ namespace CzTrainApi.Entities
     {
         public string Benutzername { get; set; }
         public string Passwort { get; set; }
+        public string BenutzerRolle { get; set; }
 
         public long PersonId { get; set; }
         public Person Person { get; set; }

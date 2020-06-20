@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.PortableExecutable;
 
 namespace CzTrainApi.Common.BaseTypes
 {
@@ -8,5 +9,11 @@ namespace CzTrainApi.Common.BaseTypes
         bool Geloescht { get; set; }
         DateTime Erstellungsdatum { get; set; }
         DateTime? Aenderungsdatum { get; set; }
+    }
+
+    public interface IKatalogObjekt : IEntity
+    {
+        public string Bezeichnung { get; set; }
+        public string Discriminator { get; set; }
     }
 }

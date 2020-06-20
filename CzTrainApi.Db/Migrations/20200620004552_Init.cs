@@ -8,7 +8,7 @@ namespace CzTrainApi.Db.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Anreden",
+                name: "KatalogObjekte",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -16,11 +16,12 @@ namespace CzTrainApi.Db.Migrations
                     Geloescht = table.Column<bool>(nullable: false),
                     Erstellungsdatum = table.Column<DateTime>(nullable: false),
                     Aenderungsdatum = table.Column<DateTime>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
                     Bezeichnung = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Anreden", x => x.Id);
+                    table.PrimaryKey("PK_KatalogObjekte", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,17 +36,22 @@ namespace CzTrainApi.Db.Migrations
                     Nachname = table.Column<string>(maxLength: 50, nullable: true),
                     Vorname = table.Column<string>(maxLength: 50, nullable: true),
                     Geburtstag = table.Column<DateTime>(nullable: false),
-                    AnredeId = table.Column<long>(nullable: true)
+                    AnredeId = table.Column<long>(nullable: true),
+                    TitelId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Personen", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Personen_Anreden_AnredeId",
+                        name: "FK_Personen_KatalogObjekte_AnredeId",
                         column: x => x.AnredeId,
-                        principalTable: "Anreden",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalTable: "KatalogObjekte",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Personen_KatalogObjekte_TitelId",
+                        column: x => x.TitelId,
+                        principalTable: "KatalogObjekte",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -84,7 +90,8 @@ namespace CzTrainApi.Db.Migrations
                     Erstellungsdatum = table.Column<DateTime>(nullable: false),
                     Aenderungsdatum = table.Column<DateTime>(nullable: true),
                     Benutzername = table.Column<string>(maxLength: 50, nullable: true),
-                    Passwort = table.Column<string>(maxLength: 100, nullable: true)
+                    Passwort = table.Column<string>(maxLength: 100, nullable: true),
+                    BenutzerRolle = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -138,6 +145,11 @@ namespace CzTrainApi.Db.Migrations
                 name: "IX_Personen_AnredeId",
                 table: "Personen",
                 column: "AnredeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Personen_TitelId",
+                table: "Personen",
+                column: "TitelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -155,7 +167,7 @@ namespace CzTrainApi.Db.Migrations
                 name: "Personen");
 
             migrationBuilder.DropTable(
-                name: "Anreden");
+                name: "KatalogObjekte");
         }
     }
 }

@@ -25,10 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CzTrainApi.Apis.Katalog\CzTrainApi.Apis.Katalog.csproj" />
     <ProjectReference Include="..\CzTrainApi.Apis.Token\CzTrainApi.Apis.Token.csproj" />
     <ProjectReference Include="..\CzTrainApi.Db\CzTrainApi.Db.csproj" />
-    <ProjectReference Include="..\CzTrainApi.Repository.Contracts\CzTrainApi.Repository.Contracts.csproj" />
-    <ProjectReference Include="..\CzTrainApi.Repository\CzTrainApi.Repository.csproj" />
     <ProjectReference Include="..\CzTrainApi.Services.Contracts\CzTrainApi.Services.Contracts.csproj" />
     <ProjectReference Include="..\CzTrainApi.Services\CzTrainApi.Services.csproj" />
     <ProjectReference Include="..\CzTrainApi.ViewModels\CzTrainApi.ViewModels.csproj" />

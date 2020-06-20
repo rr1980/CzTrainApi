@@ -17,13 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzTrainApi.Services.Contrac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzTrainApi.Common", "CzTrainApi.Common\CzTrainApi.Common.csproj", "{8F754EE4-7F6A-45E1-AFF0-7270AE7FB354}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzTrainApi.Repository", "CzTrainApi.Repository\CzTrainApi.Repository.csproj", "{92FD953D-9377-4592-8B6C-19B2F1FDA498}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzTrainApi.Repository.Contracts", "CzTrainApi.Repository.Contracts\CzTrainApi.Repository.Contracts.csproj", "{5C9016AD-1D41-4421-B138-58A3161F4A28}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{5E047761-DBC2-486C-AE8B-96FA0A783040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzTrainApi.Apis.Token", "CzTrainApi.Apis.Token\CzTrainApi.Apis.Token.csproj", "{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzTrainApi.Apis.Token", "CzTrainApi.Apis.Token\CzTrainApi.Apis.Token.csproj", "{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzTrainApi.Apis.Katalog", "CzTrainApi.Apis.Katalog\CzTrainApi.Apis.Katalog.csproj", "{61F5DFBD-8105-4599-BE89-2BA89CC97A67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,24 +57,21 @@ Global
 		{8F754EE4-7F6A-45E1-AFF0-7270AE7FB354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F754EE4-7F6A-45E1-AFF0-7270AE7FB354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F754EE4-7F6A-45E1-AFF0-7270AE7FB354}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92FD953D-9377-4592-8B6C-19B2F1FDA498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92FD953D-9377-4592-8B6C-19B2F1FDA498}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92FD953D-9377-4592-8B6C-19B2F1FDA498}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92FD953D-9377-4592-8B6C-19B2F1FDA498}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C9016AD-1D41-4421-B138-58A3161F4A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C9016AD-1D41-4421-B138-58A3161F4A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C9016AD-1D41-4421-B138-58A3161F4A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C9016AD-1D41-4421-B138-58A3161F4A28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61F5DFBD-8105-4599-BE89-2BA89CC97A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61F5DFBD-8105-4599-BE89-2BA89CC97A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61F5DFBD-8105-4599-BE89-2BA89CC97A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61F5DFBD-8105-4599-BE89-2BA89CC97A67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61} = {5E047761-DBC2-486C-AE8B-96FA0A783040}
+		{61F5DFBD-8105-4599-BE89-2BA89CC97A67} = {5E047761-DBC2-486C-AE8B-96FA0A783040}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E13E18E-B2C1-4DD0-8060-AE99674E0E8B}
