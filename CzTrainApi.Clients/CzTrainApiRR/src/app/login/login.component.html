@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row h-100">
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-sm-4 col-xs-12 align-middle">
+            <div class="input-group min-vh-100 text-center m-0 d-flex flex-column ">
+                <div class="form-group">
+                    <label class="control-label" for="user">Benutzer</label>
+                    <input type="text" class="form-control" placeholder="Benutzername"
+                        (input)="benutzer.beutzername = $event.target.value" (keyup.enter)="onClickLogin()" id="user">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="pw">Passwort</label>
+                    <input type="password" class="form-control" placeholder="Passwort"
+                        (input)="benutzer.passwort = $event.target.value" (keyup.enter)="onClickLogin()" id="pw">
+                </div>
+                <button [disabled]="laedNoch" type="button" class="btn btn-primary"
+                    (click)="onClickLogin()">Login</button>
+                <div *ngIf="fehlerText" class="alert alert-danger mt-3 mb-0">{{fehlerText}}</div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        </div>
+    </div>
+</div>

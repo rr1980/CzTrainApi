@@ -13,6 +13,6 @@
         /// <summary>
         /// BeutzerRolle
         /// </summary>
-        public string BenutzerRolle { get; set; }
+        public string Rolle { get; set; }
     }
 }

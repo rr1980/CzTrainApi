@@ -53,7 +53,7 @@ namespace CzTrainApi.Web
             services.AddScoped<ITokenService, TokenService>();
             //services.AddScoped<IAnredeKatalogService, AnredeKatalogService>();
             services.AddKatalog();
-
+            services.AddCors();
             services.AddControllers();
 
             services.AddAuthorization(options =>
@@ -160,6 +160,11 @@ namespace CzTrainApi.Web
             });
 
             app.UseHttpsRedirection();
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseRouting();
 

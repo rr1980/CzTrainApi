@@ -77,7 +77,7 @@ namespace CzTrainApi.Apis.Token
                 return new LoginResponseVM
                 {
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
-                    BenutzerRolle = loginValidationResult.BenutzerRolle
+                    Rolle = loginValidationResult.BenutzerRolle
                 };
             }
             else

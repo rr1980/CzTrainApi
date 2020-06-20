@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{5E047761-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzTrainApi.Apis.Token", "CzTrainApi.Apis.Token\CzTrainApi.Apis.Token.csproj", "{E525185E-A0F3-40DB-9D4D-0EE66DBBCC61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzTrainApi.Apis.Katalog", "CzTrainApi.Apis.Katalog\CzTrainApi.Apis.Katalog.csproj", "{61F5DFBD-8105-4599-BE89-2BA89CC97A67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CzTrainApi.Apis.Katalog", "CzTrainApi.Apis.Katalog\CzTrainApi.Apis.Katalog.csproj", "{61F5DFBD-8105-4599-BE89-2BA89CC97A67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{637ADAC3-205F-4E67-B5AB-674C3D530B98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
