@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CzTrainApi.Entities.Adresse">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEAAAAAAAAAAEAAAQAAAAAAAAAABgAAAAAAAAABA=</HashCode>
+      <FileName>Adresse.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CzTrainApi.Entities.Anrede">
+    <Position X="13.25" Y="6.5" Width="1.5" />
+    <InheritanceLine Type="CzTrainApi.Entities.KatalogObjekt" ManuallyRouted="true">
+      <Path>
+        <Point X="16.5" Y="5.925" />
+        <Point X="16.301" Y="5.925" />
+        <Point X="16.301" Y="6.582" />
+        <Point X="14" Y="6.582" />
+        <Point X="14" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Anrede.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CzTrainApi.Entities.BaseEntity">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CzTrainApi.Entities.Benutzer">
+    <Position X="11.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAAAAAAAoAAAAAAAAAgAA=</HashCode>
+      <FileName>Benutzer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CzTrainApi.Entities.KatalogObjekt">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <InheritanceLine Type="CzTrainApi.Entities.BaseEntity" ManuallyRouted="true">
+      <Path>
+        <Point X="10.75" Y="3.18" />
+        <Point X="10.75" Y="3.869" />
+        <Point X="16.5" Y="3.869" />
+        <Point X="16.5" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>KatalogObjekt.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CzTrainApi.Entities.Kunde">
+    <Position X="9" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Kunde.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CzTrainApi.Entities.Person">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAABAAIAAAAAAAAAACgRAgAQAIA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Anrede" />
+      <Property Name="Titel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CzTrainApi.Entities.Titel">
+    <Position X="13.25" Y="8.25" Width="1.5" />
+    <InheritanceLine Type="CzTrainApi.Entities.KatalogObjekt" ManuallyRouted="true">
+      <Path>
+        <Point X="16.5" Y="5.925" />
+        <Point X="16.691" Y="5.925" />
+        <Point X="16.691" Y="8.118" />
+        <Point X="14" Y="8.118" />
+        <Point X="14" Y="8.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Titel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
